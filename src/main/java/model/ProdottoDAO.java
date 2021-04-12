@@ -37,8 +37,8 @@ public class ProdottoDAO {
   public List<Prodotto> doRetriveByCategoria(int idcategoria) {
 
     ArrayList<Prodotto> prodotti = new ArrayList<>();
-    PreparedStatement statement1;
-    Statement statement2;
+    PreparedStatement statement1, statement2;
+    Statement statemen2;
     ResultSet rs1, rs2;
     Prodotto prodotto;
     ArrayList<Integer> idcat_res = new ArrayList<>();
@@ -52,16 +52,18 @@ public class ProdottoDAO {
         idcat_res.add(rs1.getInt(1));
       }
       for (int i = 0; idcat_res.size() > i; i++) {
-        String query =
-            "SELECT id, nome, descrizione, prezzo FROM prodotto WHERE id=" + idcat_res.get(i) + ";";
-        statement2 = con.createStatement();
-        rs2 = statement2.executeQuery(query);
-        prodotto = new Prodotto();
-        prodotto.setId(rs2.getInt(1));
-        prodotto.setName(rs2.getString(2));
-        prodotto.setDescription(rs2.getString(3));
-        prodotto.setPrice(rs2.getDouble(4));
-        prodotti.add(prodotto);
+        statement2 = con.prepareStatement("SELECT * FROM prodotto WHERE id=?");
+        statement2.setInt(1, idcat_res.get(i));
+        rs2 = statement2.executeQuery();
+
+        while (rs2.next()) {
+          prodotto = new Prodotto();
+          prodotto.setId(rs2.getInt(1));
+          prodotto.setName(rs2.getString(2));
+          prodotto.setDescription(rs2.getString(3));
+          prodotto.setPrice(rs2.getDouble(4));
+          prodotti.add(prodotto);
+        }
       }
       return prodotti;
 
