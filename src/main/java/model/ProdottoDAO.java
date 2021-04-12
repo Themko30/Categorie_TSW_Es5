@@ -25,6 +25,7 @@ public class ProdottoDAO {
         prodotto.setId(rs.getInt(1));
         prodotto.setName(rs.getString(2));
         prodotto.setDescription(rs.getString(3));
+        prodotto.setPrice(rs.getDouble(4));
         prodotti.add(prodotto);
       }
       return prodotti;
@@ -38,7 +39,6 @@ public class ProdottoDAO {
     ArrayList<Prodotto> prodotti = new ArrayList<>();
     PreparedStatement statement1;
     Statement statement2;
-    String query;
     ResultSet rs1, rs2;
     Prodotto prodotto;
     ArrayList<Integer> idcat_res = new ArrayList<>();
@@ -52,8 +52,9 @@ public class ProdottoDAO {
         idcat_res.add(rs1.getInt(1));
       }
       for (int i = 0; idcat_res.size() > i; i++) {
+        String query =
+            "SELECT id, nome, descrizione, prezzo FROM prodotto WHERE id=" + idcat_res.get(i) + ";";
         statement2 = con.createStatement();
-        query = "SELECT id, nome, descrizione, prezzo FROM prodotto WHERE id=" + idcat_res.get(i);
         rs2 = statement2.executeQuery(query);
         prodotto = new Prodotto();
         prodotto.setId(rs2.getInt(1));

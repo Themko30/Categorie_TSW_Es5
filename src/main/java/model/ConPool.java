@@ -13,7 +13,7 @@ public class ConPool {
     if (datasource == null) {
       PoolProperties p = new PoolProperties();
       p.setUrl(
-          "jdbc:mysql://localhost:3306/modelloMVCdb?serverTimezone="
+          "jdbc:mysql://localhost:3306/categorie_db?serverTimezone="
               + TimeZone.getDefault().getID());
       p.setDriverClassName("com.mysql.cj.jdbc.Driver");
       p.setUsername("root");
