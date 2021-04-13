@@ -1,6 +1,7 @@
 package model;
 
 import java.sql.Connection;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
@@ -27,6 +28,29 @@ public class CategoriaDAO {
         categories.add(category);
       }
       return categories;
+    } catch (SQLException e) {
+      throw new RuntimeException(e);
+    }
+  }
+
+  public Categoria doRetriveById(int id) {
+
+    Categoria categoria = new Categoria();
+    PreparedStatement statement;
+    ResultSet rs;
+
+    try (Connection con = ConPool.getConnection()) {
+      statement = con.prepareStatement("SELECT * FROM categoria WHERE id=?");
+      statement.setInt(1, id);
+      rs = statement.executeQuery();
+
+      while (rs.next()) {
+        categoria = new Categoria();
+        categoria.setId(rs.getInt(1));
+        categoria.setName(rs.getString(2));
+        categoria.setDescription(rs.getString(3));
+      }
+      return categoria;
     } catch (SQLException e) {
       throw new RuntimeException(e);
     }

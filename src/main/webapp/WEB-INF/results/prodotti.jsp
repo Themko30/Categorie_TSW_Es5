@@ -11,7 +11,7 @@
 </h1>
 <br/>
 <h1>
-    Ecco i prodotti della categoria ${categoria}:
+    Ecco i prodotti della categoria ${categoria.name}:
 </h1>
 <ul>
     <c:forEach items="${prodotti}" var="prodotto">

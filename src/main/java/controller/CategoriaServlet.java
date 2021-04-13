@@ -8,6 +8,8 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import model.Categoria;
+import model.CategoriaDAO;
 import model.Prodotto;
 import model.ProdottoDAO;
 
@@ -18,11 +20,16 @@ public class CategoriaServlet extends HttpServlet {
   protected void doGet(HttpServletRequest request, HttpServletResponse response)
       throws ServletException, IOException {
     ProdottoDAO prodottoDAO = new ProdottoDAO();
+    CategoriaDAO categoriaDAO = new CategoriaDAO();
+
+    Categoria categoria =
+        categoriaDAO.doRetriveById(Integer.parseInt(request.getParameter("categoria")));
 
     List<Prodotto> prodotti =
         prodottoDAO.doRetriveByCategoria(Integer.parseInt(request.getParameter("categoria")));
 
     request.setAttribute("prodotti", prodotti);
+    request.setAttribute("categoria", categoria);
 
     String add = "/WEB-INF/results/prodotti.jsp";
     RequestDispatcher dispatcher = request.getRequestDispatcher(add);
