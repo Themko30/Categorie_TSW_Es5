@@ -975,77 +975,128 @@ sys|schema||mysql.sys|localhost|TRIGGER|G</Grants>
     <table id="285" parent="2" name="categoria"/>
     <table id="286" parent="2" name="prodotto"/>
     <table id="287" parent="2" name="prodottocategoria"/>
-    <column id="288" parent="285" name="id">
+    <table id="288" parent="2" name="utente"/>
+    <column id="289" parent="285" name="id">
       <Position>1</Position>
       <DataType>int|0s</DataType>
       <NotNull>1</NotNull>
       <SequenceIdentity>null</SequenceIdentity>
     </column>
-    <column id="289" parent="285" name="nome">
+    <column id="290" parent="285" name="nome">
       <Position>2</Position>
       <DataType>varchar(45)|0s</DataType>
     </column>
-    <column id="290" parent="285" name="descrizione">
+    <column id="291" parent="285" name="descrizione">
       <Position>3</Position>
       <DataType>varchar(45)|0s</DataType>
     </column>
-    <key id="291" parent="285" name="PRIMARY">
+    <key id="292" parent="285" name="PRIMARY">
       <NameSurrogate>1</NameSurrogate>
       <ColNames>id</ColNames>
       <Primary>1</Primary>
     </key>
-    <column id="292" parent="286" name="id">
+    <column id="293" parent="286" name="id">
       <Position>1</Position>
       <DataType>int|0s</DataType>
       <NotNull>1</NotNull>
       <SequenceIdentity>null</SequenceIdentity>
     </column>
-    <column id="293" parent="286" name="nome">
+    <column id="294" parent="286" name="nome">
       <Position>2</Position>
       <DataType>varchar(45)|0s</DataType>
     </column>
-    <column id="294" parent="286" name="descrizione">
+    <column id="295" parent="286" name="descrizione">
       <Position>3</Position>
       <DataType>varchar(45)|0s</DataType>
     </column>
-    <column id="295" parent="286" name="prezzo">
+    <column id="296" parent="286" name="prezzo">
       <Position>4</Position>
       <DataType>double unsigned|0s</DataType>
       <DefaultExpression>&apos;0&apos;</DefaultExpression>
     </column>
-    <key id="296" parent="286" name="PRIMARY">
+    <key id="297" parent="286" name="PRIMARY">
       <NameSurrogate>1</NameSurrogate>
       <ColNames>id</ColNames>
       <Primary>1</Primary>
     </key>
-    <column id="297" parent="287" name="idprodotto">
+    <column id="298" parent="287" name="idprodotto">
       <Position>1</Position>
       <DataType>int|0s</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="298" parent="287" name="idcategoria">
+    <column id="299" parent="287" name="idcategoria">
       <Position>2</Position>
       <DataType>int|0s</DataType>
       <NotNull>1</NotNull>
     </column>
-    <index id="299" parent="287" name="idcategoria">
+    <index id="300" parent="287" name="idcategoria">
       <ColNames>idcategoria</ColNames>
       <Type>btree</Type>
     </index>
-    <key id="300" parent="287" name="PRIMARY">
+    <key id="301" parent="287" name="PRIMARY">
       <NameSurrogate>1</NameSurrogate>
       <ColNames>idprodotto</ColNames>
       <Primary>1</Primary>
     </key>
-    <foreign-key id="301" parent="287" name="prodottocategoria_ibfk_1">
+    <foreign-key id="302" parent="287" name="prodottocategoria_ibfk_1">
       <ColNames>idprodotto</ColNames>
       <RefTableName>prodotto</RefTableName>
       <RefColNames>id</RefColNames>
     </foreign-key>
-    <foreign-key id="302" parent="287" name="prodottocategoria_ibfk_2">
+    <foreign-key id="303" parent="287" name="prodottocategoria_ibfk_2">
       <ColNames>idcategoria</ColNames>
       <RefTableName>categoria</RefTableName>
       <RefColNames>id</RefColNames>
     </foreign-key>
+    <column id="304" parent="288" name="id">
+      <Position>1</Position>
+      <DataType>int|0s</DataType>
+      <NotNull>1</NotNull>
+      <SequenceIdentity>null</SequenceIdentity>
+    </column>
+    <column id="305" parent="288" name="username">
+      <Position>2</Position>
+      <DataType>varchar(45)|0s</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="306" parent="288" name="passwordhash">
+      <Position>3</Position>
+      <DataType>varchar(45)|0s</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="307" parent="288" name="email">
+      <Position>4</Position>
+      <DataType>varchar(45)|0s</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="308" parent="288" name="admin">
+      <Position>5</Position>
+      <DataType>tinyint(1)|0s</DataType>
+      <NotNull>1</NotNull>
+      <DefaultExpression>0</DefaultExpression>
+    </column>
+    <index id="309" parent="288" name="username_UNIQUE">
+      <ColNames>username</ColNames>
+      <Unique>1</Unique>
+      <Type>btree</Type>
+    </index>
+    <index id="310" parent="288" name="email_UNIQUE">
+      <ColNames>email</ColNames>
+      <Unique>1</Unique>
+      <Type>btree</Type>
+    </index>
+    <key id="311" parent="288" name="PRIMARY">
+      <NameSurrogate>1</NameSurrogate>
+      <ColNames>id</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <key id="312" parent="288" name="username_UNIQUE">
+      <ColNames>username</ColNames>
+      <UnderlyingIndexName>username_UNIQUE</UnderlyingIndexName>
+    </key>
+    <key id="313" parent="288" name="email_UNIQUE">
+      <ColNames>email</ColNames>
+      <UnderlyingIndexName>email_UNIQUE</UnderlyingIndexName>
+    </key>
   </database-model>
 </dataSource>

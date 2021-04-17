@@ -16,9 +16,9 @@
 <ul>
     <c:forEach items="${prodotti}" var="prodotto">
         <li>
-            Nome:${prodotto.name}<br>
-            Descrizione:${prodotto.description}<br>
-            Prezzo:${prodotto.price}<br>
+            Nome: ${prodotto.name}<br>
+            Descrizione: ${prodotto.description}<br>
+            Prezzo: ${prodotto.price}<br>
         </li>
     </c:forEach>
 </ul>

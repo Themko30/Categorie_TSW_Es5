@@ -10,25 +10,29 @@
 <h1><%= "Home Page" %>
 </h1>
 <br/>
+<jsp:include page="header.jsp"/>
 
-<form id="form1" action="CategoriaServlet">
-    <label for="select1">Categorie:</label>
-    <select id="select1" name="categoria" size="1" form="form1">
-        <c:forEach items="${categorie}" var="categoria">
-            <option value="${categoria.id}">${categoria.name}</option>
+<fieldset>
+    <legend>Sezione Categorie</legend>
+    <form id="form1" action="CategoriaServlet">
+        <label for="select1">Categorie:</label>
+        <select id="select1" name="categoria" size="1" form="form1">
+            <c:forEach items="${categorie}" var="categoria">
+                <option value="${categoria.id}">${categoria.name}</option>
+            </c:forEach>
+        </select>
+        <input type="submit" value="Vai alla categoria">
+    </form>
+
+    <ul>
+        <c:forEach items="${prodotti}" var="prodotto">
+            <li>
+                Nome: ${prodotto.name}<br>
+                Descrizione: ${prodotto.description}<br>
+                Prezzo: ${prodotto.price}<br>
+            </li>
         </c:forEach>
-    </select>
-    <input type="submit" value="Vai alla categoria">
-</form>
-
-<ul>
-    <c:forEach items="${prodotti}" var="prodotto">
-        <li>
-            Nome:${prodotto.name}<br>
-            Descrizione:${prodotto.description}<br>
-            Prezzo:${prodotto.price}<br>
-        </li>
-    </c:forEach>
-</ul>
+    </ul>
+</fieldset>
 </body>
 </html>

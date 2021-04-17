@@ -38,7 +38,6 @@ public class ProdottoDAO {
 
     ArrayList<Prodotto> prodotti = new ArrayList<>();
     PreparedStatement statement1, statement2;
-    Statement statemen2;
     ResultSet rs1, rs2;
     Prodotto prodotto;
     ArrayList<Integer> idcat_res = new ArrayList<>();
