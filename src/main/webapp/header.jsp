@@ -8,7 +8,7 @@
 <body>
 <fieldset>
     <legend>Area Registrazione</legend>
-    <form action=http://localhost:8080/signup.jsp>
+    <form action="signup.html">
         <label>Se sei un nuovo utente registrati qui:</label>
         <input type="submit" value="Registrati">
     </form>

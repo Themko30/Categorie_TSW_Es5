@@ -10,7 +10,7 @@
 <h1><%= "Home Page" %>
 </h1>
 <br/>
-<jsp:include page="header.jsp"/>
+<jsp:include page="../header.jsp"/>
 
 <fieldset>
     <legend>Sezione Categorie</legend>
