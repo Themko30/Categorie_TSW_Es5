@@ -12,7 +12,7 @@
         <label>Se sei un nuovo utente registrati qui:</label>
         <input type="submit" value="Registrati">
     </form>
-    <form action="login.html">
+    <form action="Login.jsp">
         <label>Se già sei registrato clicca qui:</label>
         <input type="submit" value="Login">
     </form>

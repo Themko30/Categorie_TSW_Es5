@@ -1,30 +1,26 @@
 package controller;
 
 import java.io.IOException;
-import java.util.List;
-import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import model.Prodotto;
-import model.ProdottoDAO;
+import model.Utente;
+import model.UtenteDAO;
 
-@WebServlet("/index.html")
-public class HomeServlet extends HttpServlet {
+@WebServlet(name = "LoginServlet", value = "/LoginServlet")
+public class LoginServlet extends HttpServlet {
 
   @Override
   protected void doGet(HttpServletRequest request, HttpServletResponse response)
       throws ServletException, IOException {
-    ProdottoDAO prodottoDAO = new ProdottoDAO();
-    List<Prodotto> prodotti = prodottoDAO.doRetriveAll();
-
-    request.setAttribute("prodotti", prodotti);
-
-    String add = "/index.jsp";
-    RequestDispatcher dispatcher = request.getRequestDispatcher(add);
-    dispatcher.forward(request, response);
+    UtenteDAO utenteDAO = new UtenteDAO();
+    Utente utente =
+        utenteDAO.doRetrieveByUsernamePassword(
+            request.getParameter("username"), request.getParameter("password"));
+    request.getSession().setAttribute("utente", utente);
+    response.sendRedirect(".");
   }
 
   @Override

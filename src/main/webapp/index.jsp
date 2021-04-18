@@ -1,6 +1,7 @@
 <%@ taglib prefix='c' uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
 <%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -10,8 +11,17 @@
 <h1><%= "Home Page" %>
 </h1>
 <br/>
-<jsp:include page="../header.jsp"/>
+<jsp:include page="header.jsp"/>
+<br>
+<h3>Benvenuto utente
+    <c:if test="${utente.username== null}">
+        sconosciuto
+    </c:if>
 
+    <c:if test="${utente.username!= null}">
+        ${utente.username}
+    </c:if>
+</h3>
 <fieldset>
     <legend>Sezione Categorie</legend>
     <form id="form1" action="CategoriaServlet">
