@@ -20,7 +20,7 @@ public class HomeServlet extends HttpServlet {
     ProdottoDAO prodottoDAO = new ProdottoDAO();
     List<Prodotto> prodotti = prodottoDAO.doRetriveAll();
 
-    request.setAttribute("prodotti", prodotti);
+    request.getSession().setAttribute("prodotti", prodotti);
 
     String add = "/index.jsp";
     RequestDispatcher dispatcher = request.getRequestDispatcher(add);
